@@ -23,6 +23,13 @@ namespace backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+			services.AddCors(options => options.AddPolicy("Cors", builder =>
+			{
+				builder
+				.AllowAnyOrigin()
+				.AllowAnyHeader()
+				.AllowAnyMethod();
+			}));
             services.AddMvc();
         }
 
@@ -33,6 +40,8 @@ namespace backend
             {
                 app.UseDeveloperExceptionPage();
             }
+
+			app.UseCors("Cors");
 
             app.UseMvc();
         }
