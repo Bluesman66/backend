@@ -31,7 +31,7 @@ namespace backend.Controllers
 		[HttpPost]
 		public void Post([FromBody]Question question)
 		{
-			this.context.Qestions.Add(new Question() { Text = "test" });
+			this.context.Qestions.Add(question);
 			this.context.SaveChanges();
 		}
 	}
