@@ -13,6 +13,6 @@ namespace backend
 
 		public DbSet<Question> Qestions { get; set; }
 
-		public DbSet<backend.Models.Quiz> Quiz { get; set; }
+		public DbSet<Quiz> Quiz { get; set; }
 	}
 }
