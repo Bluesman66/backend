@@ -26,6 +26,12 @@ namespace backend.Controllers
 			return this.context.Qestions;			
 		}
 
+		[HttpGet("{quizId}")]
+		public IEnumerable<Question> Get([FromRoute] int quizId)
+		{
+			return this.context.Qestions.Where(q => q.QuizId == quizId);
+		}
+
 		[HttpPost]
 		public async Task<IActionResult> Post([FromBody]Question question)
 		{
