@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace backend
 {
@@ -33,8 +34,11 @@ namespace backend
 			}));
 
 			services.AddDbContext<QuizContext>(options => options.UseInMemoryDatabase("quiz"));
+			services.AddDbContext<UserDbContext>(options => options.UseInMemoryDatabase("user"));
 
-            services.AddMvc();
+			services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<UserDbContext>();
+
+			services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
